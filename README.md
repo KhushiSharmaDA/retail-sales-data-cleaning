@@ -1,83 +1,59 @@
-# Superstore Sales Data Cleaning – Task 1 (Elevate Internship)
+# Retail Sales Data Cleaning (Superstore Dataset)
 
-This project contains the complete data-cleaning workflow for a Superstore Sales dataset as part of **Task 1** of the Elevate Internship Program.  
-The goal of the task was to clean, preprocess, and prepare the dataset for analysis using **Python (Pandas + NumPy)** and create basic visuals using **Matplotlib**.
+End-to-end data cleaning pipeline for a Superstore sales dataset — built in Python (Pandas, NumPy, Matplotlib) as part of a data analytics internship task.
 
----
+## What This Project Does
 
-## 📌 Project Objectives
+- Cleans irregular column names (spaces, casing, punctuation)
+- Fixes data types for dates and numeric fields
+- Handles missing values (median imputation for numeric, "unknown" for categorical)
+- Removes duplicate rows
+- Detects and removes outliers using the IQR method
+- Generates exploratory visualizations
+- Exports a final, analysis-ready CSV
 
-- Import and inspect the raw dataset  
-- Clean irregular column names  
-- Fix incorrect data types (dates, numbers)  
-- Handle missing values  
-- Remove duplicate rows  
-- Detect and remove outliers (IQR method)  
-- Generate data visualizations  
-- Export the final cleaned dataset in CSV format  
+## Key Result
 
-This ensures the dataset is clean, reliable, and analysis-ready.
+Started with a raw, inconsistent Superstore export and produced a clean dataset ready for dashboards, EDA, or ML — with reproducible, documented steps (see `summary_changes.md` for the full before/after log).
 
----
+## Project Structure
 
-## 📁 Project Structure
+```
+Superstore-Task-1/
+├── data/
+│   ├── raw/            # original unprocessed data
+│   └── processed/      # cleaned_superstore.csv (output)
+├── src/
+│   └── clean.py        # main cleaning script
+├── visuals/
+│   ├── sales_distribution.png
+│   └── profit_by_category.png
+├── requirements.txt
+└── summary_changes.md  # detailed changelog of cleaning steps
+```
 
+## Tech Stack
 
----
+Python 3 · Pandas · NumPy · Matplotlib
 
-## 🛠 Technologies Used
+## How to Run
 
-- **Python 3**
-- **Pandas**
-- **NumPy**
-- **Matplotlib**
+```bash
+pip install -r requirements.txt
+python src/clean.py
+```
 
----
+This generates:
+- `data/processed/cleaned_superstore.csv` — the cleaned dataset
+- `visuals/sales_distribution.png` — sales histogram
+- `visuals/profit_by_category.png` — profit by category bar chart
 
-## 🚀 How to Run the Project
+## Visuals
 
-1. Install required libraries:
+**Sales Distribution** — shows sales values are heavily right-skewed, with most transactions under $200 and a long tail of high-value outliers.
 
+**Profit by Category** — aggregates total profit per product category to spot which categories drive (or drag down) profitability.
 
-2. Run the script:
+## Notes
 
-
-3. Output files will be generated automatically:
-- Cleaned CSV: 'cleaned_superstore.csv'
-- Visuals: 'visuals/sales_distribution.pn', visuals/profit_by_category.png
-
----
-
-## 📊 Visuals Generated
-
-### ✔ Sales Distribution (Histogram)
-Shows how sales values are spread across the dataset.
-
-### ✔ Total Profit by Category (Bar Chart)
-Aggregates total profit for each product category.
-
-These visuals help verify data patterns after cleaning.
-
----
-
-## ✔ Final Output (What You Achieved)
-
-The cleaned dataset now has:
-
-- Consistent and readable column names  
-- Valid date formats  
-- Correct numeric types  
-- Missing values handled properly  
-- Duplicate rows removed  
-- Outliers treated using IQR rules  
-- Ready-to-use visuals  
-- A clean final CSV suitable for dashboards, EDA, ML models, and reporting  
-
----
-
-## 📝 Notes
-
-This submission is completed as per the guidelines of the **Elevate Internship – Task 1 (Data Cleaning)**.  
-All steps were manually implemented using Python code in **VS Code**, without using automated data-cleaning tools.
-
-
+All cleaning logic was written manually in Python (no automated cleaning tools), so every transformation is traceable and explainable. See `summary_changes.md` for the step-by-step log of exactly what changed and why.
